@@ -1,8 +1,8 @@
 # Unify Berkeley Hackathon
 
-This repository uses the OpenAI Agents SDK to build a small multi-agent system that can help you conduct research and draft cold emails for jobs and internships. We've set this up to use your existing Chrome browser with current logins, so if you don't have Chrome please install Chrome and login to your Google / Gmail account.
+This repository uses the [OpenAI Agents SDK](https://openai.github.io/openai-agents-python/) to build a small multi-agent system that can help you conduct research and draft cold emails for jobs and internships. We've set this up to use your existing Chrome browser with current logins, so if you don't have Chrome please install Chrome and login to your Google / Gmail account.
 
-The goal of this workshop is to draft and send a cold email to us (we'll give you our email) using this Agent system to conduct research on the job posting, customize it with context about you from your resume, and then email us using the Computer Agent via Gmail in your browser.
+The goal of this workshop is to draft and send a cold email to us (we'll give an email address) using this Agent system to conduct research on the job posting, customize it with context about you from your resume, and then email us using the Computer Agent via Gmail in your browser.
 
 May the best cold AI generated email win :)
 
