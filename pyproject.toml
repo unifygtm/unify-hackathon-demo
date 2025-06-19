@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unify-berkeley-hackathon"
+version = "0.1.0"
+description = "A Python project for the Unify Berkeley Hackathon"
+requires-python = "==3.12.*"
+dependencies = [
+    "beautifulsoup4~=4.12",
+    "markdown~=3.7",
+    "openai~=1.86.0",
+    "openai-agents~=0.0.17",
+    "pillow==11.1.0",
+    "playwright~=1.47",
+    "pyarrow~=17.0",
+    "playwright==1.50.0",
+    "pydantic==2.10.6",
+    "pydantic_core==2.27.2",
+    "python-dotenv==1.0.1",
+    "tenacity~=9.0",
+    "urllib3==2.3.0",
+    "pdfplumber==0.11.7"
+]
+
+
+[tool.pyright]
+include = ["."]
+typeCheckingMode = "standard"
+
+[tool.ruff.lint]
+extend-select = ["I"]
+
+[tool.setuptools]
+packages = { find = { where = ["."] } } 
+
+[tool.uv]
+dev-dependencies = [
+    "ipykernel~=6.29",
+    "pyright~=1.1",
+    "pytest~=8.3",
+    "python-dotenv~=1.0",
+    "ruff~=0.6",
+    "trio~=0.26",
+]

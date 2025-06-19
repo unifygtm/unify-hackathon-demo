@@ -1,0 +1,14 @@
+beautifulsoup4~=4.12
+markdown~=3.7
+openai~=1.86.0
+openai-agents~=0.0.17
+pillow==11.1.0
+playwright~=1.47
+pyarrow~=17.0
+playwright==1.50.0
+pydantic==2.10.6
+pydantic_core==2.27.2
+python-dotenv==1.0.1
+tenacity~=9.0
+urllib3==2.3.0
+pdfplumber==0.11.7

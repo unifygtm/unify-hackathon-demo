@@ -1,0 +1,55 @@
+John Smith
+john.smith@berkeley.edu | (510) 555-0123 | Berkeley, CA
+linkedin.com/in/johnsmith | github.com/johnsmith | johnsmith.dev
+
+EDUCATION
+University of California, Berkeley
+Bachelor of Science in Computer Science
+Expected Graduation: May 2025
+GPA: 3.85/4.00
+Relevant Coursework: Data Structures (CS 61B), Algorithms (CS 170), Machine Learning (CS 189), Computer Architecture (CS 61C), Operating Systems (CS 162), Database Systems (CS 186)
+
+TECHNICAL SKILLS
+Programming Languages: Python, Java, C++, JavaScript, TypeScript
+Web Technologies: React, Node.js, HTML/CSS, REST APIs
+Tools & Technologies: Git, Docker, AWS, Linux, SQL
+Languages: English (Native), Spanish (Conversational)
+
+EXPERIENCE
+
+Google - Software Engineering Intern
+Mountain View, CA | June 2023 - August 2023
+• Developed and optimized backend services for Google Cloud Platform, improving API response time by 35%
+• Implemented automated testing infrastructure using Python and Jenkins, reducing deployment failures by 40%
+• Collaborated with senior engineers to design and implement new microservices architecture
+
+UC Berkeley CS Department - Undergraduate Student Instructor
+Berkeley, CA | January 2023 - Present
+• Lead weekly discussion sections for CS 61B (Data Structures) with 30+ students
+• Develop and grade programming assignments, focusing on algorithm optimization and code quality
+• Hold office hours to help students debug code and understand complex data structures
+
+PROJECTS
+
+Berkeley AI Research Assistant
+• Developed a machine learning pipeline for analyzing student performance patterns using Python and TensorFlow
+• Implemented data preprocessing and feature engineering techniques, achieving 85% prediction accuracy
+• Created interactive visualizations using D3.js to display results to faculty members
+• github.com/johnsmith/berkeley-ai-research
+
+Smart Campus Navigation App
+• Built a React Native mobile application to help students navigate UC Berkeley campus efficiently
+• Implemented real-time location tracking and optimal path finding using Dijkstra's algorithm
+• Integrated with Berkeley's public API to display real-time bus schedules and building information
+• 500+ active users with 4.5/5 App Store rating
+• github.com/johnsmith/campus-nav
+
+LEADERSHIP & ACTIVITIES
+• Technical Lead, Berkeley Hackathon Club - Organized monthly hackathons and mentored 20+ students
+• Member, Berkeley Competitive Programming Team - Placed in top 10 at regional ICPC competition
+• Teaching Assistant, CS Scholars Program - Mentored underrepresented students in computer science
+
+AWARDS & HONORS
+• Regents' and Chancellor's Scholarship, UC Berkeley (2021-2025)
+• 2nd Place, Berkeley AI Hackathon 2023
+• Dean's List, College of Engineering (2021-2023)
