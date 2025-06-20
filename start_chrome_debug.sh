@@ -32,7 +32,7 @@ sleep 5
 if nc -z localhost 9222 2>/dev/null; then
     echo "Chrome debug mode ready on port 9222"
     echo "All your logins and data are available!"
-    echo "Now run: uv run specialized_agents/planning_agent.py"
+    echo "Now run: uv run -m specialized_agents.planning_agent"
 else
     echo "❌ Debug port not accessible"
 fi

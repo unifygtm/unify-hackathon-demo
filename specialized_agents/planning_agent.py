@@ -3,7 +3,6 @@ import asyncio
 import pdfplumber
 from agents import Agent, ModelSettings, Runner, function_tool
 
-from .computer_agent import build_computer_agent
 from .constants import (
     DEFAULT_AGENT_MODEL,
     JOB_PAGE_URL,
@@ -12,7 +11,7 @@ from .constants import (
     TOOL_MAX_TURNS,
 )
 from .research_agent import build_research_agent
-
+from .computer_agent import build_computer_agent
 PLANNER_PROMPT = """
 # Manager – System Prompt
 
@@ -45,7 +44,7 @@ FULL_COMPUTER_USE_TASK_PROMPT = """
 1. Find a relevant software engineering, AI, or ML job/internship in the Bay Area based on my profile using the web research tool.
 2. Summarize the job description of the job/internship position that would best fit my profile.
 3. Navigate to https://www.gmail.com
-4. Draft a cover letter style email for the summarized job description. Do not send the emails, but leave them in the draft folder. Do not ask additional questions. 
+4. Draft a cover letter style email for the summarized job description. Do not send the emails, but leave them in the draft folder. Do not ask additional questions.
 Rules:
 When searching for jobs, ALWAYS use the resume information provided in the context to find relevant matches. The resume contains important details about the user's skills, experience, and qualifications that should be used to find appropriate job opportunities.
 """
@@ -56,12 +55,14 @@ TASK_PROMPT = f"""
 3. Draft a cover letter style email for the summarized job description utilizing specific resume information, making sure to include previous job experience, skills, and qualifications. Do not send the emails, but leave them in the draft folder. Do not ask additional questions. Do not discard the draft.
 """
 
+
 async def read_resume() -> str:
     if RESUME_PATH.endswith(".pdf"):
         return pdf_to_text(RESUME_PATH)
     else:
-        f=open(RESUME_PATH, "r")
+        f = open(RESUME_PATH, "r")
         return f.read()
+
 
 def pdf_to_text(pdf_path):
     text = ""
@@ -70,16 +71,25 @@ def pdf_to_text(pdf_path):
             text += page.extract_text()
     return text
 
+
 def make_agent_tool(agent, name: str, description: str, context: dict | None = None):
-    @function_tool(name_override=name, description_override=description, failure_error_function=None)
+    @function_tool(
+        name_override=name,
+        description_override=description,
+        failure_error_function=None,
+    )
     async def agent_tool(query: str) -> str:
         try:
-            result = await Runner.run(agent, query, max_turns=TOOL_MAX_TURNS, context=context)
+            result = await Runner.run(
+                agent, query, max_turns=TOOL_MAX_TURNS, context=context
+            )
             print(name, "Final output: ", result.final_output)
             return str(result.final_output)
         except Exception as e:
             return f"Error in tool {name}: {e}"
+
     return agent_tool
+
 
 async def build_planning_agent() -> tuple[Agent, str]:
     try:
@@ -91,14 +101,14 @@ async def build_planning_agent() -> tuple[Agent, str]:
             research_agent,
             name="research",
             description="Research the web for information",
-            context={"resume": user_resume}
+            context={"resume": user_resume},
         )
 
         computer_tool = make_agent_tool(
             computer_agent,
             name="computer",
             description="Use a browser to complete actions like viewing website data and completing browser tasks. This tool can also be used to close the browser.",
-            context={"computer": computer, "resume": user_resume}
+            context={"computer": computer, "resume": user_resume},
         )
         agent = Agent(
             name="Planning Agent",
@@ -115,6 +125,7 @@ async def build_planning_agent() -> tuple[Agent, str]:
     except Exception as e:
         raise Exception(f"Error in planning agent: {e}")
 
+
 async def main():
     try:
         agent, user_resume = await build_planning_agent()
@@ -127,6 +138,7 @@ async def main():
         print(result.final_output)
     except Exception as e:
         raise Exception(f"Error in planning agent: {e}")
+
 
 if __name__ == "__main__":
     asyncio.run(main())
