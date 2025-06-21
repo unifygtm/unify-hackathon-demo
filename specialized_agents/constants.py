@@ -9,7 +9,7 @@ TOOL_MAX_TURNS = 50
 RESUME_PATH = "resume.pdf"
 
 # Adjust this to the job posting you want to apply for
-JOB_PAGE_URL="https://jobs.ashbyhq.com/unify/72d32cd6-9be8-4b7a-b214-ba8b4d6126fa"
+JOB_PAGE_URL="https://jobs.ashbyhq.com/unify/95113ca1-4f4a-4435-8636-5758ce0d155e"
 
 # Adjust this to the search context size you want to use
 SEARCH_CONTEXT_SIZE = "medium"  
