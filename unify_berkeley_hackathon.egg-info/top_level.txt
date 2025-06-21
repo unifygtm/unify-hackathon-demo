@@ -1,2 +1,0 @@
-computers
-specialized_agents
