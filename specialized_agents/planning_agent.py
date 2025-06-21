@@ -14,7 +14,7 @@ from .constants import (
 from .research_agent import build_research_agent
 
 PLANNER_PROMPT = """
-# Manager – System Prompt
+# Manager - System Prompt
 
 **Core Mission:**
 As manager, your job is to ensure that all specialist agents are contributing to the core task given by the user. Your ONLY job is to plan and create tasks to give to the appropriate tools and reflect on progress as the tools complete work. Use the information from the tools to complete the task or delegate additional work.
@@ -41,19 +41,10 @@ Use the research tool when you need to use general search queries to find inform
 6. When using the computer tool, you MUST acknowledge any safety checks that are presented. If you see a safety check ID (like 'cu_sc_*'), you must include it in your response to acknowledge it.
 """
 
-FULL_COMPUTER_USE_TASK_PROMPT = """
-1. Find a relevant software engineering, AI, or ML job/internship in the Bay Area based on my profile using the web research tool.
-2. Summarize the job description of the job/internship position that would best fit my profile.
-3. Navigate to https://www.gmail.com
-4. Draft a cover letter style email for the summarized job description. Do not send the emails, but leave them in the draft folder. Do not ask additional questions. 
-Rules:
-When searching for jobs, ALWAYS use the resume information provided in the context to find relevant matches. The resume contains important details about the user's skills, experience, and qualifications that should be used to find appropriate job opportunities.
-"""
-
 TASK_PROMPT = f"""
 1. Summarize the job description of the job/internship position on this job page: {JOB_PAGE_URL}, use the browser tool if needed.
 2. Navigate to https://www.gmail.com
-3. Draft a cover letter style email for the summarized job description utilizing specific resume information, making sure to include previous job experience, skills, and qualifications. Do not send the emails, but leave them in the draft folder. Do not ask additional questions. Do not discard the draft.
+3. Draft a cover letter style email for the summarized job description utilizing specific resume information, making sure to include previous job experience, skills, and qualifications. The recipient of the email is "kevin@unifygtm.com". Do not send the emails, but leave them in the draft folder. Do not ask additional questions. Do not discard the draft.
 """
 
 async def read_resume() -> str:
