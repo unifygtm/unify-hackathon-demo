@@ -9,8 +9,8 @@ from agents import (
 )
 
 from computers.default import LocalPlaywrightBrowser
-from .constants import COMPUTER_MODEL
 
+from specialized_agents.constants import COMPUTER_MODEL
 
 @function_tool(name_override="navigate_to_url")
 async def navigate_to_url(ctx: RunContextWrapper, url: str) -> str:

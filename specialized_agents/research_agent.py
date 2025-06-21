@@ -1,8 +1,7 @@
 from typing import Literal
 
 from agents import Agent, ModelSettings, WebSearchTool
-
-from .constants import DEFAULT_AGENT_MODEL
+from constants import DEFAULT_AGENT_MODEL
 
 default_search_context: Literal["low", "medium", "high"] = "medium"
 

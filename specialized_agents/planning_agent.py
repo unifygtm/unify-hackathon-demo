@@ -2,16 +2,15 @@ import asyncio
 
 import pdfplumber
 from agents import Agent, ModelSettings, Runner, function_tool
-
-from .computer_agent import build_computer_agent
-from .constants import (
+from computer_agent import build_computer_agent
+from constants import (
     DEFAULT_AGENT_MODEL,
     JOB_PAGE_URL,
     PLANNER_MAX_TURNS,
     RESUME_PATH,
     TOOL_MAX_TURNS,
 )
-from .research_agent import build_research_agent
+from research_agent import build_research_agent
 
 PLANNER_PROMPT = """
 # Manager - System Prompt

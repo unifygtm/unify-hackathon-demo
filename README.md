@@ -15,7 +15,7 @@ May the best cold AI generated email win :)
 Log into your Gmail account in Chrome if you're not already logged in.
 
 Configure your agent
-- Update the `.env` file with an OpenAI API Key that we'll provide.
+- Create a `.env` file in the root of the repo. Fill in the OpenAI API Key that we'll provide during the workshop.
 - Update `RESUME_PATH` at `specialized_agents/constants.py` as needed.
 - Adjust the job posting you want to apply for in the `constants.py` file.
 
@@ -24,6 +24,9 @@ Install the dependencies and then run the shell script and python script for the
 ```bash
 # Install dependencies
 uv sync
+
+# Install Playwright Chromium dependency
+playwright install
 
 # If you want to run your local Chrome, run the bash script
 ./start_chrome_debug.sh
