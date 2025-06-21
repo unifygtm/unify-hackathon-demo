@@ -4,12 +4,11 @@ from agents import (
     ComputerTool,
     ModelSettings,
     RunContextWrapper,
-    Runner,
     function_tool,
 )
 
 from computers.default import LocalPlaywrightBrowser
-from .constants import COMPUTER_MODEL
+from specialized_agents.constants import COMPUTER_MODEL
 
 
 @function_tool(name_override="navigate_to_url")
@@ -44,7 +43,6 @@ async def open_in_new_tab(ctx: RunContextWrapper, url: str) -> str:
     await pc._page.goto(url)
     await pc.wait()
     return await pc._page.title()
-
 
 
 async def build_computer_agent() -> tuple[Agent, AsyncComputer]:

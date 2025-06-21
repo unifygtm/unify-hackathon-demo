@@ -8,7 +8,10 @@ class LocalPlaywrightBrowser(BasePlaywrightComputer, AsyncComputer):
     """Launches Chrome via CDP or falls back to Playwright Chromium."""
 
     def __init__(
-        self, debug_port: int = 9222, initial_url: str = "https://www.google.com", show_cursor: bool = True
+        self,
+        debug_port: int = 9222,
+        initial_url: str = "https://www.google.com",
+        show_cursor: bool = True,
     ):
         """Initialize the browser.
 

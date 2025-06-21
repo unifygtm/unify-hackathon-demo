@@ -8,29 +8,37 @@ May the best cold AI generated email win :)
 
 ## Quick Start
 
-[Install uv](https://docs.astral.sh/uv/getting-started/installation/)
+Install a few prerequisites on your computer:
 
-[Install Chrome](https://www.google.com/chrome/)
+1. [uv](https://docs.astral.sh/uv/getting-started/installation/)
 
-Log into your Gmail account in Chrome if you're not already logged in.
+2. [Google Chrome](https://www.google.com/chrome/)
 
-Configure your agent
-- Update the `.env` file with an OpenAI API Key that we'll provide.
-- Update `RESUME_PATH` at `specialized_agents/constants.py` as needed.
-- Adjust the job posting you want to apply for in the `constants.py` file.
+Log in to your Gmail account in Chrome if you're not already logged in.
 
-Install the dependencies and then run the shell script and python script for the Agents. After you get a sense for how it will work, we encourage you to jump in and adjust the prompts to craft a perfect cold email to us (the stock prompts will draft a pretty mediocre cold email).
+Next, configure your agent:
+
+1. Copy the `.env.example` file to create a new `.env` in the root of the repo. Fill in the OpenAI API Key that we'll provide during the workshop.
+2. Update `RESUME_PATH` at `specialized_agents/constants.py` as needed.
+3. Adjust the job posting you want to apply for in the `constants.py` file.
+
+Next install the Python dependencies and then run the shell script and python script for the Agents:
 
 ```bash
 # Install dependencies
 uv sync
 
+# Install Playwright Chromium dependency
+uv run playwright install
+
 # If you want to run your local Chrome, run the bash script
 ./start_chrome_debug.sh
 
-# To run the Agents
+# Run the Agents
 uv run -m specialized_agents.planning_agent
 ```
+
+After you get a sense for how it will work, we encourage you to jump in and adjust the prompts to craft a perfect cold email to us (the stock prompts will draft a pretty mediocre cold email).
 
 ## Details
 
