@@ -20,7 +20,7 @@ dependencies = [
     "pydantic_core==2.27.2",
     "python-dotenv==1.0.1",
     "tenacity~=9.0",
-    "urllib3==2.3.0",
+    "urllib3==2.5.0",
     "pdfplumber==0.11.7"
 ]
 
