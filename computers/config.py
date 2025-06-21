@@ -1,5 +1,4 @@
-from .contrib import *
-from .default import *
+from computers.default import LocalPlaywrightBrowser
 
 computers_config = {
     "local-playwright": LocalPlaywrightBrowser,

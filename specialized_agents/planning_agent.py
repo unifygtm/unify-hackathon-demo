@@ -2,15 +2,16 @@ import asyncio
 
 import pdfplumber
 from agents import Agent, ModelSettings, Runner, function_tool
-from computer_agent import build_computer_agent
-from constants import (
+
+from specialized_agents.computer_agent import build_computer_agent
+from specialized_agents.constants import (
     DEFAULT_AGENT_MODEL,
     JOB_PAGE_URL,
     PLANNER_MAX_TURNS,
     RESUME_PATH,
     TOOL_MAX_TURNS,
 )
-from research_agent import build_research_agent
+from specialized_agents.research_agent import build_research_agent
 
 PLANNER_PROMPT = """
 # Manager - System Prompt
@@ -46,12 +47,14 @@ TASK_PROMPT = f"""
 3. Draft a cover letter style email for the summarized job description utilizing specific resume information, making sure to include previous job experience, skills, and qualifications. The recipient of the email is "kevin@unifygtm.com". Do not send the emails, but leave them in the draft folder. Do not ask additional questions. Do not discard the draft.
 """
 
+
 async def read_resume() -> str:
     if RESUME_PATH.endswith(".pdf"):
         return pdf_to_text(RESUME_PATH)
     else:
-        f=open(RESUME_PATH, "r")
+        f = open(RESUME_PATH, "r")
         return f.read()
+
 
 def pdf_to_text(pdf_path):
     text = ""
@@ -60,16 +63,25 @@ def pdf_to_text(pdf_path):
             text += page.extract_text()
     return text
 
+
 def make_agent_tool(agent, name: str, description: str, context: dict | None = None):
-    @function_tool(name_override=name, description_override=description, failure_error_function=None)
+    @function_tool(
+        name_override=name,
+        description_override=description,
+        failure_error_function=None,
+    )
     async def agent_tool(query: str) -> str:
         try:
-            result = await Runner.run(agent, query, max_turns=TOOL_MAX_TURNS, context=context)
+            result = await Runner.run(
+                agent, query, max_turns=TOOL_MAX_TURNS, context=context
+            )
             print(name, "Final output: ", result.final_output)
             return str(result.final_output)
         except Exception as e:
             return f"Error in tool {name}: {e}"
+
     return agent_tool
+
 
 async def build_planning_agent() -> tuple[Agent, str]:
     try:
@@ -81,15 +93,16 @@ async def build_planning_agent() -> tuple[Agent, str]:
             research_agent,
             name="research",
             description="Research the web for information",
-            context={"resume": user_resume}
+            context={"resume": user_resume},
         )
 
         computer_tool = make_agent_tool(
             computer_agent,
             name="computer",
             description="Use a browser to complete actions like viewing website data and completing browser tasks. This tool can also be used to close the browser.",
-            context={"computer": computer, "resume": user_resume}
+            context={"computer": computer, "resume": user_resume},
         )
+
         agent = Agent(
             name="Planning Agent",
             instructions=PLANNER_PROMPT + f"The user's resume is: {user_resume}",
@@ -105,6 +118,7 @@ async def build_planning_agent() -> tuple[Agent, str]:
     except Exception as e:
         raise Exception(f"Error in planning agent: {e}")
 
+
 async def main():
     try:
         agent, user_resume = await build_planning_agent()
@@ -117,6 +131,7 @@ async def main():
         print(result.final_output)
     except Exception as e:
         raise Exception(f"Error in planning agent: {e}")
+
 
 if __name__ == "__main__":
     asyncio.run(main())

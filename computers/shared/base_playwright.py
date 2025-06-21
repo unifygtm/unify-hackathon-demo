@@ -111,10 +111,12 @@ class BasePlaywrightComputer:
     def dimensions(self):
         return (1024, 768)
 
-    def __init__(self, initial_url: str = "https://www.google.com", show_cursor: bool = True):
+    def __init__(
+        self, initial_url: str = "https://www.google.com", show_cursor: bool = True
+    ):
         self._playwright = None  # Will be initialized in __aenter__
         self._browser: Browser = None  # type: ignore[assignment]
-        self._page: Page = None  # type: ignore[assignment] 
+        self._page: Page = None  # type: ignore[assignment]
         self.initial_url = initial_url
         self.show_cursor = show_cursor
 
@@ -166,7 +168,9 @@ class BasePlaywrightComputer:
         print("Taking screenshot...")
         try:
             print("page:", self._page)
-            png_bytes = await self._page.screenshot(full_page=False, timeout=0, type="png")
+            png_bytes = await self._page.screenshot(
+                full_page=False, timeout=0, type="png"
+            )
             print(f"Screenshot taken, size: {len(png_bytes)} bytes")
             return base64.b64encode(png_bytes).decode("utf-8")
         except Exception as e:
@@ -183,8 +187,14 @@ class BasePlaywrightComputer:
             await self._page.mouse.wheel(x, y)
         else:
             # Handle normal mouse clicks
-            if button in [MouseButton.LEFT.value, MouseButton.RIGHT.value, MouseButton.MIDDLE.value]:
-                await self._page.mouse.click(x, y, button=cast(Literal["left", "right", "middle"], button))
+            if button in [
+                MouseButton.LEFT.value,
+                MouseButton.RIGHT.value,
+                MouseButton.MIDDLE.value,
+            ]:
+                await self._page.mouse.click(
+                    x, y, button=cast(Literal["left", "right", "middle"], button)
+                )
             else:
                 # Default to left click for unknown buttons
                 await self._page.mouse.click(x, y, button="left")
