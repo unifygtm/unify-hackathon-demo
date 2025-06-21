@@ -7,12 +7,19 @@ The goal of this workshop is to draft and send a cold email to us (we'll give an
 May the best cold AI generated email win :)
 
 ## Quick Start
-To get started you'll need to:
-- update the `.env` file with an OpenAI API Key that we'll provide
-- update the `resume.txt` or `resume.pdf` files with your own resume
-- adjust the job posting you want to apply for in the `constants.py` file
 
-After setting up the following, install the dependencies and then run the shell script and python script for the Agents. After you get a sense for how it will work, we encourage you to jump in and adjust the prompts to craft a perfect cold email to us (the stock prompts will draft a pretty mediocre cold email).
+[Install uv](https://docs.astral.sh/uv/getting-started/installation/)
+
+[Install Chrome](https://www.google.com/chrome/)
+
+Log into your Gmail account in Chrome if you're not already logged in.
+
+Configure your agent
+- Update the `.env` file with an OpenAI API Key that we'll provide.
+- Update `RESUME_PATH` at `specialized_agents/constants.py` as needed.
+- Adjust the job posting you want to apply for in the `constants.py` file.
+
+Install the dependencies and then run the shell script and python script for the Agents. After you get a sense for how it will work, we encourage you to jump in and adjust the prompts to craft a perfect cold email to us (the stock prompts will draft a pretty mediocre cold email).
 
 ```bash
 # Install dependencies
@@ -29,27 +36,11 @@ uv run -m specialized_agents.planning_agent
 
 The agent connects to your existing Chrome browser via Chrome DevTools Protocol (CDP):
 
-1. Start Chrome with remote debugging enabled on port 9222
+1. `start_chrome_debug.sh` starts Chrome with remote debugging enabled on port 9222
 2. Agent automatically connects to your existing Chrome session
 3. All your current tabs, logins, and extensions remain intact
 4. If connection fails, falls back to launching Playwright browser
 
-## Chrome Debug Port
-
-### macOS/Linux:
-```bash
-# Find Chrome path
-which google-chrome || which chrome
-
-# Start Chrome with debug port
-"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --remote-debugging-port=9222
-```
-
-### Windows:
-```bash
-# Start Chrome with debug port (adjust path as needed)
-"C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222
-```
 
 ## Environment
 
